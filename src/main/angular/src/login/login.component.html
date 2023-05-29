@@ -1,0 +1,30 @@
+
+
+<html>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+<body>
+  <div class="flex justify-center"> 
+    <form [formGroup]="loginForm" (ngSubmit)="submit()" class="form-highlight max-w-lg w-full mx-4 p-4" >
+
+      <div>
+    <label for="login" class="font-bold">Logiiin:</label>
+    <input type="text" id="login" formControlName="login" required class="border border-gray-300 p-2 rounded-md w-full" >
+  </div>
+
+  <div>
+    <label for="senha" class="font-bold">Senha:</label>
+    <input type="password" id="senha" formControlName="senha" required class="border border-gray-300 p-2 rounded-md w-full">
+  </div>
+  <div class="flex justify-center mt-4">
+     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="mostrarposCadastro"  >Entrar</button>
+    </div>
+    <p class="text-red-500">{{ login }}</p>
+    <ng-container *ngIf="exibirPosLogin">
+      <router-outlet></router-outlet>
+    </ng-container>
+  </form>   
+</div>
+
+</body>
+</html>
+

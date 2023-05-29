@@ -1,0 +1,8 @@
+business\cadastroBusiness.class
+persistence\TestandoCadastroGenericDAO.class
+controller\lojacontroller.class
+persistence\GenericDAO.class
+entities\MessageResponse.class
+entities\usuario.class
+controller\JaxRsApplication.class
+persistence\usuarioDAO.class

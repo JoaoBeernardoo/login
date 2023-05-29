@@ -1,0 +1,54 @@
+<html>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+<body>
+  <div class="flex justify-center">
+    <form [formGroup]="loginForm" (ngSubmit)="submit()" class="form-highlight max-w-lg w-full mx-4 p-4">
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label for="nome" class="font-bold">Nome:</label>
+          <input type="text" id="nome" formControlName="nome" required class="border border-gray-300 p-2 rounded-md w-full">
+          <div *ngIf="loginForm.controls['nome'].invalid && (loginForm.controls['nome'].dirty || loginForm.controls['nome'].touched)">
+            <span class="text-red-500">Campo obrigatório</span>
+          </div>
+        </div>
+        <div>
+          <label for="login" class="font-bold">Login:</label>
+          <input type="text" id="login" formControlName="login" required class="border border-gray-300 p-2 rounded-md w-full">
+          <div *ngIf="loginForm.controls['login'].invalid && (loginForm.controls['login'].dirty || loginForm.controls['login'].touched)">
+            <span class="text-red-500">Campo obrigatório</span>
+          </div>
+        </div>
+        <div>
+          <label for="email" class="font-bold">Email:</label>
+          <input type="email" id="email" formControlName="email" required class="border border-gray-300 p-2 rounded-md w-full">
+          <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
+            <span class="text-red-500">Campo obrigatório</span>
+          </div>
+        </div>
+        <div>
+          <label for="celular" class="font-bold">Celular:</label>
+          <input type="text" id="celular" formControlName="celular" required class="border border-gray-300 p-2 rounded-md w-full">
+          <div *ngIf="loginForm.controls['celular'].invalid && (loginForm.controls['celular'].dirty || loginForm.controls['celular'].touched)">
+            <span class="text-red-500">Campo obrigatório</span>
+          </div>
+        </div>
+        <div class="col-span-2 flex justify-center">
+          <label for="senha" class="font-bold">Senha:</label>
+          <input type="password" id="senha" formControlName="senha" required class="border border-gray-300 p-2 rounded-md w-full">
+          <div *ngIf="loginForm.controls['senha'].invalid && (loginForm.controls['senha'].dirty || loginForm.controls['senha'].touched)">
+            <span class="text-red-500">Campo obrigatório</span>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="flex justify-center mt-4">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cadastrar</button>
+      </div>
+      <p class="text-red-500">{{ cadastroStatus }}</p>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<html>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="flex flex-col h-screen justify-center items-center bg-gray-100">
+  <main class="flex flex-col items-center mt-8">
+    <div class="space-y-4">
+      <ng-container *ngIf="exibirCadastro">
+        <router-outlet></router-outlet>
+      </ng-container>
+
+      <div class="flex space-x-4 text-center">
+        <button  *ngIf="!cadastroRealizado" class="my-4" (click)="mostrarCadastro()" routerLink="/cadastro">Fazer Cadastro</button>
+        <button  *ngIf="!loginRealizado" class="my-4" (click)="mostrarLogin()" routerLink="/login">Fazer Login</button>
+      </div>
+
+      <ng-container *ngIf="exibirLogin">
+        <router-outlet></router-outlet>
+      </ng-container>
+
+      <div class="text-center">
+        <button class="my-4" (click)="voltar()" *ngIf="!paglogin" >Voltar</button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
