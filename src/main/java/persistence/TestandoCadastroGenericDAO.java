@@ -7,8 +7,8 @@ public class TestandoCadastroGenericDAO {
     String teste = "nana";
 
     usuarioDAO usu = new usuarioDAO();
-    usu.excluirporlogin(teste);
-       
+   String joao= usu.exibiremail("joao");
+       System.out.println(joao);
     }
 }
 

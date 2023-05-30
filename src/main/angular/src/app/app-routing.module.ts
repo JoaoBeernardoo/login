@@ -6,6 +6,7 @@ import { LoginComponent } from '../login/login.component';
 import { LoginRoutingModule } from '../login/login-routing.module';
 import { PosloginComponent } from 'src/poslogin/poslogin.component';
 import { PosloginRoutingModule } from '../poslogin/poslogin-routing.module';
+import { CadastroRoutingModule } from 'src/cadastro/cadastro-routing.module';
 
 
 const routes: Routes = [
@@ -16,7 +17,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),ReactiveFormsModule, LoginRoutingModule, PosloginRoutingModule],
+  imports: [RouterModule.forRoot(routes),ReactiveFormsModule, LoginRoutingModule, PosloginRoutingModule, CadastroRoutingModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

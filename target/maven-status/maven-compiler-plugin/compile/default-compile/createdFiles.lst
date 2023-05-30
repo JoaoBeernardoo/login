@@ -1,8 +1,10 @@
-business\cadastroBusiness.class
 persistence\TestandoCadastroGenericDAO.class
 controller\lojacontroller.class
 persistence\GenericDAO.class
+business\cadastroBusiness.class
+email\enviaremail$1.class
 entities\MessageResponse.class
+email\enviaremail.class
 entities\usuario.class
 controller\JaxRsApplication.class
 persistence\usuarioDAO.class

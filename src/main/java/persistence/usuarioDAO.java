@@ -9,8 +9,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import javax.persistence.EntityManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+
 
 
 
@@ -19,7 +18,7 @@ import org.apache.logging.log4j.LogManager;
 @Named
 @Dependent
 public class usuarioDAO extends GenericDAO<usuario>{
-    private static final Logger logger = LogManager.getLogger(usuario.class);
+    
 
     private static String VERIFICAR_LOGIN = " SELECT login FROM entities.usuario WHERE login = :loginfornecido ";
 
@@ -30,6 +29,7 @@ public class usuarioDAO extends GenericDAO<usuario>{
 
    private static String EXCLUIR_PELO_LOGIN = "DELETE FROM entities.usuario WHERE login = :loginfornecido";
   
+   private static String RECUPERAR_EMAIL  = " SELECT email FROM entities.usuario WHERE login = :loginfornecido ";
 
 
 
@@ -44,6 +44,17 @@ public class usuarioDAO extends GenericDAO<usuario>{
         }
    }
 
+
+   public String exibiremail(final String loginfornecido){
+    TypedQuery<String> query = getEntityManager().createQuery(RECUPERAR_EMAIL, String.class);
+    query.setParameter("loginfornecido", loginfornecido);
+    try {
+        return query.getSingleResult();
+    } catch (NoResultException e) {
+        return null;
+    }
+    
+   }
 
     public String verificalogin(final String loginfornecido) {
         TypedQuery<String> query = getEntityManager().createQuery(VERIFICAR_LOGIN, String.class);
@@ -74,13 +85,12 @@ public class usuarioDAO extends GenericDAO<usuario>{
     public boolean excluirporlogin(final String loginfornecido) {
         EntityManager entityManager = getEntityManager();
         entityManager.getTransaction().begin();
-        logger.warn(loginfornecido);
+        
         Query query = entityManager.createQuery(EXCLUIR_PELO_LOGIN);
         query.setParameter("loginfornecido", loginfornecido);
         
         int linhasAfetadas = query.executeUpdate();
 
-        logger.warn(linhasAfetadas);
 
         entityManager.getTransaction().commit();
         entityManager.close();
