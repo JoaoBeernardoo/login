@@ -1,8 +1,11 @@
+email\enviardanfeemail$1.class
 persistence\TestandoCadastroGenericDAO.class
+email\enviardanfeemail.class
 controller\lojacontroller.class
 persistence\GenericDAO.class
 business\cadastroBusiness.class
 email\enviaremail$1.class
+danfe\enviardanfe.class
 entities\MessageResponse.class
 email\enviaremail.class
 entities\usuario.class

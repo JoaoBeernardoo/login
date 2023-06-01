@@ -96,4 +96,27 @@ public class lojacontroller {
         }
     }
     
+
+    @GET
+    @Path("/enviardanfe")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public MessageResponse enviardanfe(@QueryParam("login") String login){
+     
+        
+        boolean enviarDanfe = business.enviardanfe(login);
+
+        if(enviarDanfe){
+            String message = "sucess";
+            return new MessageResponse(message);
+            
+        }else{
+            String message = "fail";
+
+            return new MessageResponse(message);
+        }
+
+    }
+
+
 }

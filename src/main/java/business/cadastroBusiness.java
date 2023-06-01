@@ -6,10 +6,15 @@ import javax.enterprise.context.Dependent;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 import email.enviaremail;
+import danfe.enviardanfe;
+import email.enviardanfeemail;
 
 @Named
 @Dependent
 public class cadastroBusiness {
+
+   @Inject
+   private enviardanfeemail enviardanfeemaill;
 
    @Inject
    private enviaremail Email;
@@ -59,10 +64,28 @@ public class cadastroBusiness {
  }
 
 
+ public boolean enviardanfe(String loginfornecido){
+    
+
+     String email = usuDAO.exibiremail(loginfornecido);
+      
+     boolean enviardanfe = enviardanfeemaill.enviarEmailDanfe(email);
+
+     if(enviardanfe){
+        return true; 
+     }else{
+        return false;
+     } 
+
+ }
+
+
  public boolean  excluirporlogin(String loginfornecido){
 
     String email = usuDAO.exibiremail(loginfornecido);
-    Email.enviar(email);
+    String Assunto=("Exclusao de conta");
+    String texto = ("Sua conta foi excluida com sucesso Ate..");
+    Email.enviar(email, Assunto, texto);
 
     boolean exclusaoRealizada = usuDAO.excluirporlogin(loginfornecido);
 

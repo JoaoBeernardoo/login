@@ -11,7 +11,11 @@ import { Router } from '@angular/router';
 export class PosloginComponent {
   nomeUsuario: string = '';
 
+  enviarstatus!: string;
+
   login: string = '';
+
+
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
     //this.obterNomeUsuario();
   }
@@ -58,5 +62,28 @@ export class PosloginComponent {
       }
     });
   }
+
+  enviardanfe(login: string){
+    console.log('esta aqui');
+    const url = 'http://localhost:8080/lojinha-1/api/message/enviardanfe';
+    const params = { login: this.login };
+    console.log('esta aqui2');
+    this.http.get<any>(url, { params }).subscribe({
+      next: (response) =>{
+        if(response.message === 'sucess'){
+          console.log('esta aqui e foi');
+          this.enviarstatus = "Email enviado com boleto";
+        }else{
+          console.log(response)
+          this.enviarstatus = "Email nao enviado";
+          console.log('esta aqui e nao foi');
+        }
+      }
+
+    })
+ 
   
+  
+}
+
 }

@@ -3,6 +3,9 @@ package email;
 import javax.inject.Inject;
 import javax.mail.*;
 import javax.mail.internet.*;
+
+import com.google.protobuf.TextFormat;
+
 import java.util.Properties;
 
 
@@ -11,10 +14,10 @@ public class enviaremail {
     
 
 
-    public  void enviar(String Email){
+    public  void enviar(String Email,String Assunto, String Texto){
 
         String userEmail = "testing1554@hotmail.com";
-        String password = "###";
+        String password = "Temaki152@";
         String recipientEmail = Email;
 
         // Configurações do servidor SMTP do Outlook
@@ -41,8 +44,8 @@ public class enviaremail {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(userEmail));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
-            message.setSubject("Exclusao de conta");
-            message.setText("Sua conta foi excluida do nosso Sistema Aleatorio");
+            message.setSubject(Assunto);
+            message.setText(Texto);
 
             // Envio do e-mail
             Transport.send(message);
