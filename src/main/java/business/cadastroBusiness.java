@@ -28,7 +28,7 @@ public class cadastroBusiness {
         try {
             usuDAO.save(Usuario);
             // Código que pode lançar a exceção
-            // ...
+            // agora ele ta fazendo o que faz
         } catch (Exception e) {
             // Captura a exceção e imprime o stack trace completo
             e.printStackTrace();
